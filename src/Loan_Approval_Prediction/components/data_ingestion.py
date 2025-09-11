@@ -5,7 +5,10 @@ from src.Loan_Approval_Prediction.entity.config_entity import DataIngestionConfi
 from src.Loan_Approval_Prediction.utils.common import get_size
 from src.Loan_Approval_Prediction.logging import logger
 
-
+"""
+DataIngestion class contain methods for 
+download file from source url and extract file to defined folder
+"""
 class DataIngestion:
     def __init__(self,config:DataIngestionConfig):
         self.config=config 
