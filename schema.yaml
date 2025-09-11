@@ -1,0 +1,16 @@
+COLUMNS:
+ CustomerID            :   object
+ Name                  :   object
+ Age                   :   int64 
+ Gender                :   object
+ MaritalStatus         :   object
+ EducationLevel        :   object
+ EmploymentStatus      :   object
+ AnnualIncome          :   int64 
+ LoanAmountRequested   :   int64 
+ PurposeOfLoan         :   object
+ CreditScore           :   int64 
+ ExistingLoansCount    :   int64 
+ LatePaymentsLastYear  :   int64 
+TARGET_COLUMN:
+ LoanApproved          :   object
