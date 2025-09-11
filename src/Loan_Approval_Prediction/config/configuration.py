@@ -15,8 +15,8 @@ class ConfigManager:
 
         # read all yaml files (config, schema, params)
         self.config=read_yaml(config_file_path)
-        self.schema=read_yaml(SCHEMA_FILE_PATH)
-        self.params=read_yaml(PARAMS_FILE_PATH)
+        self.schema=read_yaml(schema_file_path)
+        self.params=read_yaml(params_file_path)
 
         # create root artifact directory if not exists
         create_dir([self.config.artifacts_root])
