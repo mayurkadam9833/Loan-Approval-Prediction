@@ -1,0 +1,7 @@
+artifacts_root: artifacts                 # main folder where all outputs/artifacts will be stored
+
+data_ingestion:
+ root_dir: artifacts/data_ingestion                                                       # folder for data ingestion step
+ source_url: https://github.com/mayurkadam9833/Datasets/raw/refs/heads/main/loan_data.zip # link of dataset
+ local_data_file: artifacts/data_ingestion/loan_data.zip                                  # downloaded zip file will be saved here
+ unzip_dir: artifacts/data_ingestion                                                      # after unzip the data will be here 
