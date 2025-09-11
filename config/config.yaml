@@ -5,3 +5,8 @@ data_ingestion:
  source_url: https://github.com/mayurkadam9833/Datasets/raw/refs/heads/main/loan_data.zip # link of dataset
  local_data_file: artifacts/data_ingestion/loan_data.zip                                  # downloaded zip file will be saved here
  unzip_dir: artifacts/data_ingestion                                                      # after unzip the data will be here 
+
+data_validation:
+ root_dir: artifacts/data_validation                            # folder for data validation step
+ unzip_data: artifacts/data_ingestion/loan_data.csv             # unzip data path for dataset
+ STATUS_FILE: artifacts/data_validation/validation_status.txt   # validation file path
