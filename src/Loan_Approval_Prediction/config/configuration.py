@@ -1,6 +1,6 @@
 from src.Loan_Approval_Prediction.constants import *
 from src.Loan_Approval_Prediction.utils.common import read_yaml,create_dir
-from src.Loan_Approval_Prediction.entity.config_entity import DataIngestionConfig
+from src.Loan_Approval_Prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig
 
 """
 ConfigManager class is responsible for reading config, schema and params yaml files
@@ -25,7 +25,7 @@ class ConfigManager:
     def get_data_ingestion_config(self)-> DataIngestionConfig:
         config=self.config.data_ingestion
 
-        # create ingestion folder
+        # create data ingestion folder
         create_dir([config.root_dir])
 
         # prepare and return DataIngestionConfig dataclass
@@ -36,4 +36,18 @@ class ConfigManager:
             unzip_dir=config.unzip_dir)
         
         return data_ingestion_config
-        
+    
+    # method to get data validation config object
+    def get_data_validation_config(self)-> DataValidationConfig:
+        config=self.config.data_validation
+
+        # create data validation folder
+        create_dir([config.root_dir])
+
+        # prepare and return DataValidationConfig dataclass
+        data_validation_config=DataValidationConfig(
+            root_dir=config.root_dir,
+            unzip_data=config.unzip_data,
+            STATUS_FILE=config.STATUS_FILE
+        )
+        return data_validation_config
