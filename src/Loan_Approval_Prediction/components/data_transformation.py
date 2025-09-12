@@ -1,4 +1,5 @@
 import os
+import joblib
 import pandas as pd 
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
@@ -33,7 +34,11 @@ class DataTransformation:
         data["Gender"]=data[["Gender"]].apply(self.gender_encoder.fit_transform)
         data["MaritalStatus"]=data[["MaritalStatus"]].apply(self.MaritalStatus_encoder.fit_transform)
         data["LoanApproved"]=data[["LoanApproved"]].apply(self.LoanApproved_encoder.fit_transform)
+        joblib.dump(self.gender_encoder,self.config.root_dir)
+        joblib.dump(self.MaritalStatus_encoder,self.config.root_dir)
+        joblib.dump(self.LoanApproved_encoder,self.config.root_dir)
         return data 
+    
     
     def ohe_encode(self):
         data=self.label_encode()

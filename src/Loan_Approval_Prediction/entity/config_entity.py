@@ -23,3 +23,19 @@ class DataTransformationConfig:
     root_dir: Path 
     data_path: Path
     traget_column: str
+
+# Configuration dataclass for model trainer process (directories, file paths)
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path 
+    train_data_path: Path
+    model_name: str
+    criterion: str
+    max_depth: int 
+    max_samples: int
+    min_samples_leaf: int 
+    min_samples_split: int
+    n_estimators: int
+    target_col: str
+
+

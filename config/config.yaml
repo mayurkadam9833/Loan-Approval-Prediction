@@ -14,3 +14,8 @@ data_validation:
 data_transformation:
  root_dir: artifacts/data_transformation                # folder for data tarnsformation step
  data_path: artifacts/data_ingestion/loan_data.csv      # extract dataset path
+
+model_trainer:
+ root_dir: artifacts/model_trainer                              # folder for model trainer step
+ train_data_path: artifacts/data_transformation/train_data.csv  # train data path
+ model_name: model.joblib                                       # trained model will be saved with this name

@@ -1,1 +1,7 @@
-key : val
+RandomForestClassifier:
+ criterion: 'gini'
+ max_depth: 40 
+ max_samples: 3000
+ min_samples_leaf: 3 
+ min_samples_split: 5
+ n_estimators: 200
