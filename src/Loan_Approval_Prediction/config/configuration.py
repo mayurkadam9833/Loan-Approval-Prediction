@@ -1,6 +1,6 @@
 from src.Loan_Approval_Prediction.constants import *
 from src.Loan_Approval_Prediction.utils.common import read_yaml,create_dir
-from src.Loan_Approval_Prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig
+from src.Loan_Approval_Prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
 
 """
 ConfigManager class is responsible for reading config, schema and params yaml files
@@ -52,3 +52,19 @@ class ConfigManager:
             all_schema=schema
         )
         return data_validation_config
+    
+    # method to get data transformation config object
+    def get_data_transformation_config(self)->DataTransformationConfig:
+        config=self.config.data_transformation
+        schema=self.schema.TARGET_COLUMN 
+
+        # create data transformation folder
+        create_dir([config.root_dir])
+
+        # prepare and return DataTransformationConfig dataclass
+        data_transformation_config=DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_path=config.data_path,
+            traget_column=list(schema.keys())[0])
+
+        return data_transformation_config

@@ -10,3 +10,7 @@ data_validation:
  root_dir: artifacts/data_validation                            # folder for data validation step
  unzip_data: artifacts/data_ingestion/loan_data.csv             # unzip data path for dataset
  STATUS_FILE: artifacts/data_validation/validation_status.txt   # validation file path
+
+data_transformation:
+ root_dir: artifacts/data_transformation                # folder for data tarnsformation step
+ data_path: artifacts/data_ingestion/loan_data.csv      # extract dataset path
