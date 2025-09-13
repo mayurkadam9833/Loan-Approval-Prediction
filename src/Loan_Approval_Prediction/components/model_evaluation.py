@@ -1,6 +1,7 @@
 import os 
 import joblib
 import pandas as pd
+import numpy as np
 from pathlib import Path
 from src.Loan_Approval_Prediction.utils.common import save_json
 from sklearn.metrics import accuracy_score,confusion_matrix,precision_score,recall_score,f1_score,roc_auc_score
@@ -32,9 +33,9 @@ class ModelEvaluation:
 
             (acc,cf,pr,rc,f1,roc)=self.get_metrics(test_y,prediction)
 
-            metrics={"accuracy score":acc,"confusion matrix":cf,"precision score":pr,"recall score":rc,"f1-score":f1,"roc auc score":roc}
+            metrics={"accuracy score":acc,"confusion matrix":cf.tolist(),"precision score":pr,"recall score":rc,"f1-score":f1,"roc auc score":roc}
 
-            save_json(Path(self.config.metric_file),metrics)
+            save_json(Path(self.config.evaluation_file),metrics)
         
         except Exception as e:
             raise e

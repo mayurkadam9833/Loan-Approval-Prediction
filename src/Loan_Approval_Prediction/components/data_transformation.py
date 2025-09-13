@@ -56,7 +56,7 @@ class DataTransformation:
             data=self.ohe_encode()
             
             x=data.drop([self.config.traget_column],axis=1)
-            y=data[[self.config.traget_column]]
+            y=data[self.config.traget_column]
             
             train_x,test_x,train_y,test_y=train_test_split(x,y,test_size=0.2,random_state=42)
             
@@ -67,7 +67,7 @@ class DataTransformation:
             joblib.dump(self.scale,os.path.join(self.config.root_dir,"scale.joblib"))
             
             train_data=pd.concat([pd.DataFrame(scale_train_x).reset_index(drop=True),(sampled_train_y)],axis=1)
-            test_data=pd.concat([pd.DataFrame(scale_test_x).reset_index(drop=True),test_y],axis=1)
+            test_data=pd.concat([pd.DataFrame(scale_test_x).reset_index(drop=True),pd.DataFrame(test_y).reset_index(drop=True)],axis=1)
             
             train_data.to_csv(os.path.join(self.config.root_dir,"train_data.csv"))
             test_data.to_csv(os.path.join(self.config.root_dir,"test_data.csv"))
