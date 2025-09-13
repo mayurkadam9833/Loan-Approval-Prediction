@@ -24,7 +24,7 @@ class DataTransformationConfig:
     data_path: Path
     traget_column: str
 
-# Configuration dataclass for model trainer process (directories, file paths)
+# Configuration dataclass for model trainer process (directories, file paths,model parameters)
 @dataclass(frozen=True)
 class ModelTrainerConfig:
     root_dir: Path 
@@ -38,4 +38,12 @@ class ModelTrainerConfig:
     n_estimators: int
     target_col: str
 
+# Configuration dataclass for model evaluation process (directories, file paths)
+@dataclass(frozen=True)
+class ModelEvaluationConfig:
+    root_dir: Path
+    test_data_path: Path
+    model_path: Path
+    evaluation_file: Path
+    target_col: str
 

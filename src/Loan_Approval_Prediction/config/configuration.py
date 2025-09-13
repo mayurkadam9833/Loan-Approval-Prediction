@@ -1,6 +1,6 @@
 from src.Loan_Approval_Prediction.constants import *
 from src.Loan_Approval_Prediction.utils.common import read_yaml,create_dir
-from src.Loan_Approval_Prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig
+from src.Loan_Approval_Prediction.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig,ModelTrainerConfig,ModelEvaluationConfig
 
 """
 ConfigManager class is responsible for reading config, schema and params yaml files
@@ -89,4 +89,19 @@ class ConfigManager:
             target_col=list(schema.keys())[0]
         )
         return model_trainer_config
+    
+    def get_model_evaluation_config(self)-> ModelEvaluationConfig:
+        config=self.config.model_evaluation
+        schema=self.schema.TARGET_COLUMN
+
+        create_dir([config.root_dir])
+
+        model_evaluation_config=ModelEvaluationConfig(
+            root_dir=config.root_dir,
+            test_data_path=config.test_data_path,
+            model_path=config.model_path, 
+            evaluation_file=config.evaluation_file,
+            target_col=list(schema.keys())[0]
+        )
+        return model_evaluation_config
     
