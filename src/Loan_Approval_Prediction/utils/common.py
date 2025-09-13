@@ -39,8 +39,8 @@ def get_size(file):
 
 # funstion to file in json format
 @ensure_annotations 
-def save_json(data=dict):
-    with open(data,"w")as f:
-        json.dump(f,indent=4)
+def save_json(path:Path,data=dict):
+    with open(path,"w")as file:
+        json.dump(data,file,indent=4)
         logger.info(f"json file saved at path: {Path}")
 
