@@ -34,9 +34,9 @@ class DataTransformation:
         data["Gender"]=data[["Gender"]].apply(self.gender_encoder.fit_transform)
         data["MaritalStatus"]=data[["MaritalStatus"]].apply(self.MaritalStatus_encoder.fit_transform)
         data["LoanApproved"]=data[["LoanApproved"]].apply(self.LoanApproved_encoder.fit_transform)
-        joblib.dump(self.gender_encoder,self.config.root_dir)
-        joblib.dump(self.MaritalStatus_encoder,self.config.root_dir)
-        joblib.dump(self.LoanApproved_encoder,self.config.root_dir)
+        joblib.dump(self.gender_encoder,os.path.join(self.config.root_dir,"gender_encoder.joblib"))
+        joblib.dump(self.MaritalStatus_encoder,os.path.join(self.config.root_dir,"MaritalStatus_encoder.joblib"))
+        joblib.dump(self.LoanApproved_encoder,os.path.join(self.config.root_dir,"LoanApproved_encoder.joblib"))
         return data 
     
     
@@ -45,6 +45,10 @@ class DataTransformation:
         data=pd.concat([data.drop(["EducationLevel"],axis=1),pd.DataFrame(self.Education_encode.fit_transform(data[["EducationLevel"]]),columns=self.Education_encode.get_feature_names_out())],axis=1)
         data=pd.concat([data.drop(["EmploymentStatus"],axis=1),pd.DataFrame(self.Employment_encode.fit_transform(data[["EmploymentStatus"]]),columns=self.Employment_encode.get_feature_names_out())],axis=1)
         data=pd.concat([data.drop(["PurposeOfLoan"],axis=1),pd.DataFrame(self.Purpose_encode.fit_transform(data[["PurposeOfLoan"]]),columns=self.Purpose_encode.get_feature_names_out())],axis=1)
+        joblib.dump(self.Education_encode,os.path.join(self.config.root_dir,"Education_encode.joblib"))
+        joblib.dump(self.Employment_encode,os.path.join(self.config.root_dir,"Employment_encode.joblib"))
+        joblib.dump(self.Purpose_encode,os.path.join(self.config.root_dir,"Purpose_encode.joblib"))
+        
         return data 
     
     def scale_and_split(self):
@@ -60,6 +64,7 @@ class DataTransformation:
             
             scale_train_x=self.scale.fit_transform(sampled_train_x)
             scale_test_x=self.scale.transform(test_x)
+            joblib.dump(self.scale,os.path.join(self.config.root_dir,"scale.joblib"))
             
             train_data=pd.concat([pd.DataFrame(scale_train_x).reset_index(drop=True),(sampled_train_y)],axis=1)
             test_data=pd.concat([pd.DataFrame(scale_test_x).reset_index(drop=True),test_y],axis=1)
