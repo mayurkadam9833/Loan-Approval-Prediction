@@ -19,7 +19,7 @@ class DataValidation:
 
             # loop through dataset columns and check against schema
             for col in all_cols:
-                if col == "LoanApproved":
+                if col == "loan_status":
                     continue
                 if col not in all_schema:
                     schema_val=False

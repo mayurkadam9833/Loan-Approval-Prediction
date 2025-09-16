@@ -5,34 +5,33 @@ from src.Loan_Approval_Prediction.pipeline.prediction_pipeline import Prediction
 st.title("Loan Approval Prediction")
 st.markdown("This project predicts whether a loan application will be approved or rejected based on applicant details")
 
-Age=st.sidebar.number_input(label="Age",min_value=1,max_value=70)
-Gender=st.sidebar.selectbox(label="Gender",options=["Male","Female"])
-MaritalStatus=st.sidebar.selectbox(label="Marital Status",options=["Non-Married","Married"])
-EducationLevel=st.sidebar.selectbox(label="Education Level",options=["High School","Bachelor","Master","PhD","Other"])
-EmploymentStatus=st.sidebar.selectbox(label="Employment Status",options=["Unemployed","Employed","Self-employed","Retired","Student"])
-AnnualIncome=st.sidebar.number_input(label="Annual Income")
-LoanAmountRequested=st.sidebar.number_input(label="LoanAmount Requested")
-PurposeOfLoan=st.sidebar.selectbox(label="Purpose Of Loan",options=["Personal","Home","Education","Car","Business"])
-CreditScore=st.sidebar.number_input(label="Credit Score")
-ExistingLoansCount=st.sidebar.number_input(label="Existing Loans Count")
-LatePaymentsLastYear=st.sidebar.number_input(label="Late Payments LastYear")
+no_of_dependents=st.sidebar.slider(label="No of dependents",min_value=0,max_value=6)
+education=st.sidebar.selectbox(label="Education",options=[" Graduate"," Not Graduate"])
+self_employed=st.sidebar.selectbox(label="self employed",options=[" No"," Yes"])
+income_annum=st.sidebar.number_input(label="income annum")
+loan_amount=st.sidebar.number_input(label="loan amount")
+loan_term=st.sidebar.slider(label="loan_term",min_value=1,max_value=20)
+cibil_score=st.sidebar.number_input(label="cibil_score")
+residential_assets_value=st.sidebar.number_input(label="residential_assets_value")
+commercial_assets_value=st.sidebar.number_input(label="commercial_assets_value")
+luxury_assets_value=st.sidebar.number_input(label="luxury_assets_value")
+bank_asset_value=st.sidebar.number_input(label="bank_asset_value")
+
 
 if st.button("Loan Status"):
-    input_data=pd.DataFrame(
-        {
-            "Age":[Age],
-            "Gender":[Gender],
-            "MaritalStatus":[MaritalStatus],
-            "EducationLevel":[EducationLevel],
-            "EmploymentStatus":[EmploymentStatus],
-            "AnnualIncome":[AnnualIncome],
-            "LoanAmountRequested":[LoanAmountRequested],
-            "PurposeOfLoan":[PurposeOfLoan],
-            "CreditScore":[CreditScore],
-            "ExistingLoansCount":[ExistingLoansCount],
-            "LatePaymentsLastYear":[LatePaymentsLastYear]
-        }
-    )
+    input_data=pd.DataFrame({
+        "no_of_dependents":[no_of_dependents],
+        "education":[education],
+        "self_employed":[self_employed],
+        "income_annum":[income_annum],
+        "loan_amount":[loan_amount],
+        "loan_term":[loan_term],
+        "cibil_score":[cibil_score],
+        "residential_assets_value":[residential_assets_value],
+        "commercial_assets_value":[commercial_assets_value],
+        "luxury_assets_value":[luxury_assets_value],
+        "bank_asset_value":[bank_asset_value]
+    })
 
     pred=PredictionPipeline()
     p=pred.prediction(input_data)

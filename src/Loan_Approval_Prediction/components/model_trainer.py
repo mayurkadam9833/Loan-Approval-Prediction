@@ -2,13 +2,15 @@ import os
 import pandas as pd 
 import joblib
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
 from src.Loan_Approval_Prediction.entity.config_entity import ModelTrainerConfig
 from src.Loan_Approval_Prediction.logging import logger
 
 class ModelTrainer:
     def __init__(self,config:ModelTrainerConfig):
         self.config=config
-        self.model=RandomForestClassifier(criterion=self.config.criterion,max_depth=self.config.max_depth,max_samples=self.config.max_samples,min_samples_leaf=self.config.min_samples_leaf,min_samples_split=self.config.min_samples_split,n_estimators=self.config.n_estimators)
+        self.model=RandomForestClassifier(max_samples=self.config.max_samples,max_depth=self.config.max_depth,min_samples_leaf=self.config.min_samples_leaf,min_samples_split=self.config.min_samples_split,n_estimators=self.config.n_estimators)
 
 
     def train_model(self):

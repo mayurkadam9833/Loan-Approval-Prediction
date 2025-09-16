@@ -42,5 +42,5 @@ def get_size(file):
 def save_json(path:Path,data=dict):
     with open(path,"w")as file:
         json.dump(data,file,indent=4)
-        logger.info(f"json file saved at path: {Path}")
+        logger.info(f"json file saved at path: {path}")
 

@@ -13,7 +13,6 @@ class DataTransformationPipeline:
         data_transformation=DataTransformation(config=data_transformation_config)
         data_transformation.data_preprocessing()
         data_transformation.label_encode()
-        data_transformation.ohe_encode()
         data_transformation.scale_and_split()
 
         

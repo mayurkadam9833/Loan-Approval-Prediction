@@ -65,7 +65,8 @@ class ConfigManager:
         data_transformation_config=DataTransformationConfig(
             root_dir=config.root_dir,
             data_path=config.data_path,
-            traget_column=list(schema.keys())[0])
+            target_col=list(schema.keys())[0]
+        )
 
         return data_transformation_config
     
@@ -80,9 +81,8 @@ class ConfigManager:
             root_dir=config.root_dir,
             train_data_path=config.train_data_path,
             model_name=config.model_name,
-            criterion=params.criterion,
-            max_depth=params.max_depth,
             max_samples=params.max_samples,
+            max_depth=params.max_depth,
             min_samples_leaf=params.min_samples_leaf,
             min_samples_split=params.min_samples_split,
             n_estimators=params.n_estimators,
