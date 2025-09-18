@@ -2,7 +2,7 @@ import pandas as pd
 from src.Loan_Approval_Prediction.entity.config_entity import DataValidationConfig
 
 """
-DataIngestion class contain method for 
+DataValidation class contain method for 
 check and validation of schema of dataset with defined schema
 """
 class DataValidation:
